@@ -20,7 +20,7 @@ namespace Lab5
             {
                 for (int i = 0; i < n; i++)
                 {
-                    if (matrix[i,j] < 0)
+                    if (matrix[i, j] < 0)
                     {
                         c++;
                     }
@@ -43,31 +43,31 @@ namespace Lab5
         {
 
             // code here
-            int n = matrix.GetLength (0);
-            int m = matrix.GetLength (1);
+            int n = matrix.GetLength(0);
+            int m = matrix.GetLength(1);
             int min = int.MaxValue;
             int jmin = -1;
             int[] arr = new int[m];
 
             for (int i = 0; i < n; i++)
             {
-                for (int j = 0;  j < m; j++)
+                for (int j = 0; j < m; j++)
                 {
-                    if (min > matrix[i,j])
+                    if (min > matrix[i, j])
                     {
-                        min = matrix[i,j];
+                        min = matrix[i, j];
                         jmin = j;
                     }
                 }
                 for (int j = 0; j < m; j++)
                 {
-                    if (min == matrix[i,j])
+                    if (min == matrix[i, j])
                     {
                         arr[0] = matrix[i, j];
                     }
                     else if (j < jmin)
                     {
-                        arr[j+1] = matrix[i, j];
+                        arr[j + 1] = matrix[i, j];
                     }
                     else
                     {
@@ -125,11 +125,11 @@ namespace Lab5
                     else if (j == jmax)
                     {
                         answer[i, j] = matrix[i, j];
-                        answer[i, j+1] = matrix[i, j];
+                        answer[i, j + 1] = matrix[i, j];
                     }
                     else
                     {
-                        answer[i,j+1] = matrix[i, j];
+                        answer[i, j + 1] = matrix[i, j];
                     }
                 }
                 max = int.MinValue;
@@ -165,7 +165,7 @@ namespace Lab5
             {
                 for (int j = 0; j < m; j++)
                 {
-                    if (max < matrix[i,j]) 
+                    if (max < matrix[i, j])
                     {
                         max = matrix[i, j];
                         jmax = j;
@@ -173,7 +173,7 @@ namespace Lab5
                 }
                 for (int j = jmax + 1; j < m; j++)
                 {
-                    if (matrix[i,j]>0)
+                    if (matrix[i, j] > 0)
                     {
                         sr += matrix[i, j];
                         c++;
@@ -185,7 +185,7 @@ namespace Lab5
                 {
                     if (matrix[i, j] < 0 && c != 0)
                     {
-                        matrix[i,j] = sr;
+                        matrix[i, j] = sr;
                     }
                 }
 
@@ -222,13 +222,13 @@ namespace Lab5
             {
                 for (int j = 0; j < m; j++)
                 {
-                    if (max < matrix[i,j])
+                    if (max < matrix[i, j])
                     {
-                        max = matrix[i,j];
+                        max = matrix[i, j];
                         jmax = j;
                     }
                 }
-                arr[n-i-1] = max;
+                arr[n - i - 1] = max;
                 max = int.MinValue;
                 jmax = -1;
 
@@ -236,7 +236,7 @@ namespace Lab5
             for (int i = 0; i < n; i++)
             {
                 if (k < m)
-                    matrix[i,k] = arr[i];
+                    matrix[i, k] = arr[i];
             }
 
             //for (int i = 0; i < n; i++)
@@ -264,9 +264,9 @@ namespace Lab5
             {
                 for (int i = 0; i < n; i++)
                 {
-                    if (max < matrix[i,j])
+                    if (max < matrix[i, j])
                     {
-                        max = matrix[i,j];
+                        max = matrix[i, j];
                     }
                 }
                 for (int i = 0; i < n; i++)
@@ -297,21 +297,21 @@ namespace Lab5
         {
 
             // code here
-            int n = matrix.GetLength (0);
-            int m = matrix.GetLength (1);
-            int[,] answer = new int[n,m];
-            int[,] arr = new int[n,2];
+            int n = matrix.GetLength(0);
+            int m = matrix.GetLength(1);
+            int[,] answer = new int[n, m];
+            int[,] arr = new int[n, 2];
             int min = int.MaxValue;
 
             for (int i = 0; i < n; i++)
             {
                 for (int j = 0; j < m; j++)
                 {
-                    if (min > matrix[i,j])
+                    if (min > matrix[i, j])
                     {
-                        min = matrix[i,j];
-                        arr[i,0] = min;
-                        arr[i,1] = i;
+                        min = matrix[i, j];
+                        arr[i, 0] = min;
+                        arr[i, 1] = i;
                     }
                 }
                 min = int.MaxValue;
@@ -323,13 +323,13 @@ namespace Lab5
                 {
                     int t = 0;
                     int ti = -1;
-                    if (arr[j,0] > arr[j - 1,0])
+                    if (arr[j, 0] > arr[j - 1, 0])
                     {
-                        t = arr[j,0];
-                        ti = arr[j,1];
-                        arr[j,0] = arr[j - 1,0];
+                        t = arr[j, 0];
+                        ti = arr[j, 1];
+                        arr[j, 0] = arr[j - 1, 0];
                         arr[j, 1] = arr[j - 1, 1];
-                        arr[j - 1,0] = t;
+                        arr[j - 1, 0] = t;
                         arr[j - 1, 1] = ti;
 
                     }
@@ -350,7 +350,7 @@ namespace Lab5
             {
                 for (int j = 0; j < m; j++)
                 {
-                    answer[i, j] = matrix[arr[i,1], j];
+                    answer[i, j] = matrix[arr[i, 1], j];
                 }
             }
 
@@ -385,7 +385,7 @@ namespace Lab5
 
             if (n != m)
             {
-                Console.WriteLine("null");
+                //Console.WriteLine("null");
                 return answer;
             }
 
@@ -400,7 +400,7 @@ namespace Lab5
             {
                 j = j1; //3
                 i = i1; //2
-                if (t < n-1)
+                if (t < n - 1)
                 {
                     while (j >= 0)
                     {
