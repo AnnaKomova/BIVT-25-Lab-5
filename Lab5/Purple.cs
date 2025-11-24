@@ -440,17 +440,77 @@ namespace Lab5
             // code here
             int n = matrix.GetLength(0);
             int m = matrix.GetLength(1);
+            if (n != m) 
+                return;
+            int max = 0;
+            int imax = 0;
+            int jmax = 0;
+            for (int i = 0; i < n; i++)
+            {
+                for (int j = 0; j < m; j++)
+                {
+                    if (Math.Abs(matrix[i, j]) > Math.Abs(max))
+                    {
+                        max = matrix[i, j];
+                        imax = i;
+                        jmax = j;
+                    }
+                }
+            }
 
+            int shifti = k - imax;
+            int shiftj = k - jmax;
+            if (shifti < 0)
+            {
+                for (int i = imax; i > k; i--)
+                {
+                    for (int j = 0; j < m; j++)
+                    {
+                        (matrix[i, j], matrix[i - 1, j]) = (matrix[i - 1, j], matrix[i, j]);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = imax; i < k; i++)
+                {
+                    for (int j = 0; j < m; j++)
+                    {
+                        (matrix[i, j], matrix[i + 1, j]) = (matrix[i + 1, j], matrix[i, j]);
+                    }
+                }
+            }
+
+            if (shiftj < 0)
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = jmax; j > k; j--)
+                    {
+                        (matrix[i, j], matrix[i, j - 1]) = (matrix[i, j - 1], matrix[i, j]);
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < n; i++)
+                {
+                    for (int j = jmax; j < k; j++)
+                    {
+                        (matrix[i, j], matrix[i, j + 1]) = (matrix[i, j + 1], matrix[i, j]);
+                    }
+                }
+            }
 
             //for (int i = 0; i < n; i++)
-            //{
-            //    for (int j = 0; j < m; j++)
             //    {
-            //        Console.Write($"{matrix[i, j], 3}");
+            //        for (int j = 0; j < m; j++)
+            //        {
+            //            Console.Write($"{matrix[i, j],3}");
+            //        }
+            //        Console.WriteLine();
             //    }
             //    Console.WriteLine();
-            //}
-            //Console.WriteLine();
 
             // end
 
@@ -465,7 +525,7 @@ namespace Lab5
 
             if (ja != ib)
             {
-                Console.WriteLine("null");
+                //Console.WriteLine("null");
                 return answer;
             }
 
@@ -483,15 +543,15 @@ namespace Lab5
                 }
             }
 
-            for (int i = 0; i < ia; i++)
-            {
-                for (int j = 0; j < jb; j++)
-                {
-                    Console.Write($"{answer[i, j],6}");
-                }
-                Console.WriteLine();
-            }
-            Console.WriteLine();
+            //for (int i = 0; i < ia; i++)
+            //{
+            //    for (int j = 0; j < jb; j++)
+            //    {
+            //        Console.Write($"{answer[i, j],6}");
+            //    }
+            //    Console.WriteLine();
+            //}
+            //Console.WriteLine();
 
             // end
 
