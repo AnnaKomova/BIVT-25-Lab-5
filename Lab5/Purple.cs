@@ -460,17 +460,38 @@ namespace Lab5
             int[,] answer = null;
 
             // code here
+            int ia = A.GetLength(0), ib = B.GetLength(0);
+            int ja = A.GetLength(1), jb = B.GetLength(1);
 
+            if (ja != ib)
+            {
+                Console.WriteLine("null");
+                return answer;
+            }
 
-            //for (int i = 0; i < n; i++)
-            //{
-            //    for (int j = 0; j < m; j++)
-            //    {
-            //        Console.Write($"{matrix[i, j], 3}");
-            //    }
-            //    Console.WriteLine();
-            //}
-            //Console.WriteLine();
+            answer = new int[ia, jb];
+            int sum = 0;
+
+            for (int i = 0; i < ia; i++)
+            {
+                for (int j = 0; j < jb; j++)
+                {
+                    for (int k = 0; k < ja; k++)
+                    {
+                        answer[i, j] += A[i, k] * B[k, j];
+                    }
+                }
+            }
+
+            for (int i = 0; i < ia; i++)
+            {
+                for (int j = 0; j < jb; j++)
+                {
+                    Console.Write($"{answer[i, j],6}");
+                }
+                Console.WriteLine();
+            }
+            Console.WriteLine();
 
             // end
 
@@ -481,16 +502,42 @@ namespace Lab5
             int[][] answer = null;
 
             // code here
+            int n = matrix.GetLength(0);
+            int m = matrix.GetLength(1);
+            answer = new int[n][];
 
+            for (int i = 0; i < n; i++)
+            {
+                int c = 0;
+                for (int j = 0; j < m; j++)
+                {
+                    if (matrix[i,j] <= 0)
+                    {
+                        c++;
+                    }
+                }
+                //Console.Write(c + "    ");
+                if (m-c == 0) 
+                {
+                    answer[i] = null;
+                    //Console.WriteLine("null");
+                    continue; 
+                }
+                answer[i] = new int[m-c];
 
-            //for (int i = 0; i < n; i++)
-            //{
-            //    for (int j = 0; j < m; j++)
-            //    {
-            //        Console.Write($"{matrix[i, j], 3}");
-            //    }
-            //    Console.WriteLine();
-            //}
+                int k = 0;
+                for (int j = 0; j < m; j++)
+                {
+                    if (matrix[i, j] > 0)
+                    {
+                        answer[i][k] = matrix[i, j];
+                        //Console.Write(answer[i][k] + " ");
+                        k++;
+                    }
+                }
+               //Console.WriteLine();
+            }
+
             //Console.WriteLine();
 
             // end
@@ -503,15 +550,62 @@ namespace Lab5
 
             // code here
 
+            int c = 0;
+            foreach(int[] arr in array)
+            {
+                foreach(int elem in arr)
+                {
+                    c++;
+                }
+            }
 
-            //for (int i = 0; i < n; i++)
-            //{
-            //    for (int j = 0; j < m; j++)
-            //    {
-            //        Console.Write($"{matrix[i, j], 3}");
-            //    }
-            //    Console.WriteLine();
-            //}
+            double sn = Math.Sqrt(c);
+            int n1 = 0;
+            //Console.WriteLine(sn);
+            if (sn % 1 == 0)
+            {
+                n1 = Convert.ToInt32(sn);
+                answer = new int[n1, n1];
+                //Console.WriteLine(n1);
+            }
+            else
+            {
+                n1 = Convert.ToInt32(Math.Floor(sn))+1;
+                answer = new int[n1, n1];
+                //Console.WriteLine(n1);
+            }
+
+            //Console.WriteLine(c);
+            int[] array1 = new int[c];
+            c = 0;
+
+            foreach (int[] arr in array)
+            {
+                foreach (int elem in arr)
+                {
+                    array1[c++] = elem;
+                    //Console.Write(elem +" ");
+                }
+            }
+           // Console.WriteLine();
+
+            for (int j = 0, i = 0; j < c; j++)
+            {
+                if ((j+1)%n1==0)
+                {
+                    int hah = array1[j];
+                    answer[i, j - n1 * i] = hah;
+                    i++;
+                    // Console.WriteLine(hah + " ");
+                }
+                else
+                {
+                    int hah = array1[j];
+                    answer[i, j - (n1 * i)] = hah;
+                    // Console.Write(hah + " ");
+                }
+            }
+
             //Console.WriteLine();
 
             // end
